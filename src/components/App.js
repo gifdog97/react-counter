@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import Header from "./Header"
+import Footer from "./Footer"
+import { Button, Input } from "@material-ui/core"
 
 // state: 実体+関数
 const App = () => {
@@ -6,12 +9,17 @@ const App = () => {
   const [message, setMessage] = useState('hello')
   return (
     <>
-      { message}: { count}
+      <Header count={count} />
+      {message}: { count}
       <div>
-        <button onClick={() => setCount(cnt => ++cnt)}>+</button>
-        <button onClick={() => setCount(cnt => --cnt)}>-</button>
-        <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+        <Button onClick={() => setCount(cnt => ++cnt)}>+</Button>
+        <Button onClick={() => setCount(cnt => --cnt)}>-</Button>
+        <Input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)} />
       </div>
+      <Footer />
     </>
   )
 }
